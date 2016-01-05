@@ -1,0 +1,153 @@
+﻿@using StandupAggragation.Core.Models
+@{
+    ViewBag.Title = "Standups";
+}
+
+<h2>Welcome @ViewBag.CurrentUser.Name</h2>
+@*o.UserId,o.UserName,o.Message, o.Date.ToShortDateString(),string.Join(",",o.Tags)*@
+<div class="[ form-group ]">
+    <input type="checkbox" name="fancy-checkbox-primary" id="checkMe" autocomplete="off" />
+    <div class="[ btn-group ]">
+        <label for="checkMe" class="[ btn btn-primary ]">
+            <span class="[ glyphicon glyphicon-ok ]"></span>
+            <span> </span>
+        </label>
+        <label for="checkMe" class="[ btn btn-default active ]">
+            Just Me
+        </label>
+    </div>
+    <input type="checkbox" name="fancy-checkbox-primary" id="checkToday" autocomplete="off" />
+    <div class="[ btn-group ]">
+        <label for="checkToday" class="[ btn btn-primary ]">
+            <span class="[ glyphicon glyphicon-ok ]"></span>
+            <span> </span>
+        </label>
+        <label for="checkToday" class="[ btn btn-default active ]">
+            Today
+        </label>
+    </div>
+</div>
+
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="historyTable">
+    <thead>
+    <tr>
+        <th>
+            UserId
+        </th>
+        <th>
+            UserName
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Tags
+        </th>
+    </tr>
+
+    </thead>
+    <tfoot>
+    <tr>
+        <th>UserId</th>
+        <th>UserName</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Tags</th>
+
+    </tr>
+    </tfoot>
+    <tbody>
+    @foreach (IStandupMessage row in ViewBag.TableData)
+    {
+        <tr>
+            <th>
+                @row.UserId
+            </th>
+            <th>
+                @row.UserName
+            </th>
+            <th>
+                @row.Message
+            </th>
+            <th>
+                @row.Date.ToString("yyyy/MM/dd")
+            </th>
+            <th>
+                @string.Join(",", row.Tags)
+            </th>
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"/>
+    
+    <script>
+        var table;
+        $(document).ready(function() {
+            $('#historyTable tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            table = $('#historyTable').DataTable({
+                "order": [[3, "desc"]],
+                "paging": false
+            });
+
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+
+            $('#checkMe').on('change', function () {
+                if (this.checked) {
+                    table
+                        .columns(0)
+                        .search(@ViewBag.CurrentUser.Id)
+                        .draw();
+                } else {
+                    table
+                         .columns(0)
+                         .search("")
+                         .draw();
+                }
+
+            });
+
+
+            $('#checkToday').on('change', function () {
+                if (this.checked) {
+                    table
+                        .columns(3)
+                        .search("@DateTime.Now.ToString("yyyy/MM/dd")")
+                        .draw();
+                } else {
+                    table
+                         .columns(3)
+                         .search("")
+                         .draw();
+                }
+
+            });
+
+        });
+
+    </script>
+}

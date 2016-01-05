@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandupAggregation.Sample", "StandupAggregation\StandupAggregation.Sample.csproj", "{C5BE9EAC-7DFD-41FD-A4C5-BEB091B72F86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandupAggragation.Core", "StandupAggragation.Core\StandupAggragation.Core.csproj", "{C75FFC6B-5726-48A7-82A2-CEF087CA2CA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4FE2FF79-E624-4B68-9BDA-5F9DDE576332}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{5CE5C95E-54BF-4F1E-814D-5447CBAFE2EF}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{1FEA9D74-44F7-4D32-AA1C-827417C0C0B0}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\StandupAggregationWeb-WAWS-dev.json = PublishScripts\Configurations\StandupAggregationWeb-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandupAggregation.Web", "StandupAggregation.Web\StandupAggregation.Web.csproj", "{9E5FDE9D-2796-4C6A-A0BE-DF19135CC9E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5BE9EAC-7DFD-41FD-A4C5-BEB091B72F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5BE9EAC-7DFD-41FD-A4C5-BEB091B72F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5BE9EAC-7DFD-41FD-A4C5-BEB091B72F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5BE9EAC-7DFD-41FD-A4C5-BEB091B72F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75FFC6B-5726-48A7-82A2-CEF087CA2CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C75FFC6B-5726-48A7-82A2-CEF087CA2CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C75FFC6B-5726-48A7-82A2-CEF087CA2CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C75FFC6B-5726-48A7-82A2-CEF087CA2CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E5FDE9D-2796-4C6A-A0BE-DF19135CC9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E5FDE9D-2796-4C6A-A0BE-DF19135CC9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E5FDE9D-2796-4C6A-A0BE-DF19135CC9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E5FDE9D-2796-4C6A-A0BE-DF19135CC9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FEA9D74-44F7-4D32-AA1C-827417C0C0B0} = {5CE5C95E-54BF-4F1E-814D-5447CBAFE2EF}
+	EndGlobalSection
+EndGlobal

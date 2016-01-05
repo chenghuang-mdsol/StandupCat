@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<appSettings>
+  <!--LoginBridge Token should use an auth_token from an integration-->
+  <add key="AuthTokens.LoginBridge" value="xxxxxxxxxxxxx" />
+  <!--Admin Token should use an admin personal token-->
+  <add key="AuthTokens.Admin" value="yyyyyyy" />
+  <add key="RoomName" value="Rave Scrum and Announcements" />
+  <add key="BotName" value="Standup" />
+</appSettings>
