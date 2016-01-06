@@ -37,10 +37,10 @@ namespace StandupAggragation.Core.DataAccess
             regex = new Regex(@"\bname: \b(.*)\b,");
             var username = regex.Match(item.From).Groups[1].Value;
             //Match tags
-            regex = new Regex(@"\[([^\[\]]*)");
+            regex = new Regex(@"\[([^\[\]]*)]");
             var message = item.Message.TrimPrefixes("/standup ");
             var date = item.Date;
-            var tags = regex.Match(item.Message).Groups.Cast<Group>().Skip(1).Select(o => o.Value).ToList();
+            var tags = regex.Matches(item.Message).Cast<Match>().Select(o => o.Value.TrimStart('[').TrimEnd(']')).ToList();
             return
                 new { UserId = userId, UserName = username, Message = message, Date = date, Tags = tags }
                     .ActLike<IStandupMessage>();
