@@ -30,6 +30,7 @@ namespace StandupAggragation.Core.Services
         {
             
             string authToken = ConfigurationManager.AppSettings["AuthTokens.LoginBridge"];
+            int groupId = int.Parse(ConfigurationManager.AppSettings["CompanyGroupId"]); 
             string url = "https://api.hipchat.com/v2/oauth/token".AddHipchatAuthentication(authToken);
             string body = $"grant_type=password&username={userName}&password={password}";
             var bodyBytes = Encoding.UTF8.GetBytes(body);
@@ -50,7 +51,7 @@ namespace StandupAggragation.Core.Services
                     using (var stream = new StreamReader(response.GetResponseStream()))
                     {
                         var result = JsonConvert.DeserializeObject<HipChatLoginResult>(stream.ReadToEnd());
-                        if (result.GroupId == 16769)
+                        if (result.GroupId == groupId)
                         {
                             return GetUser(userName);
 }

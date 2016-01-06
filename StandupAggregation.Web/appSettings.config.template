@@ -6,4 +6,6 @@
   <add key="AuthTokens.Admin" value="yyyyyyy" />
   <add key="RoomName" value="Rave Scrum and Announcements" />
   <add key="BotName" value="Standup" />
+  <!--Authorized Group Id (Your company group id)-->
+  <add key="CompanyGroupId" value="123456"/>
 </appSettings>
