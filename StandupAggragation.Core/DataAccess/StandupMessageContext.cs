@@ -120,17 +120,16 @@ namespace StandupAggragation.Core.DataAccess
         {
             //HipChat History is not realtime, allow 3 min delay.
             int timeStamp = UnixTimeStampUTC(date,0);
-            var results = Client.ViewRoomHistory(roomName, timeStamp.ToString(),"EST", 0, 1000);
+            var results = Client.ViewRoomHistory(roomName, timeStamp.ToString(),"UTC", 0, 1000);
             return results.Items;
         }
 
         private int UnixTimeStampUTC(DateTime dateTime, int miniuteDelay)
         {
-            Int32 unixTimeStamp;
             DateTime currentTime = dateTime - TimeSpan.FromMinutes(miniuteDelay);
             DateTime zuluTime = currentTime.ToUniversalTime();
             DateTime unixEpoch = new DateTime(1970, 1, 1);
-            unixTimeStamp = (Int32)(zuluTime.Subtract(unixEpoch)).TotalSeconds;
+            var unixTimeStamp = (int)(zuluTime.Subtract(unixEpoch)).TotalSeconds;
             return unixTimeStamp;
         }
 

@@ -136,7 +136,7 @@
                 if (this.checked) {
                     table
                         .columns(3)
-                        .search("@DateTime.Now.ToString("yyyy/MM/dd")")
+                        .search("@DateTime.Now.ToEstDateString()")
                         .draw();
                 } else {
                     table
